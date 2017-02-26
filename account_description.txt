@@ -1,0 +1,37 @@
+This is an account description for Real Estate management program.
+
+The auth module allows users to manage the buildings database, add and delete
+their properties
+
+User has:
+    username - any string user wishes it to be
+    password - any string up to 16 chars
+    email - string with '@' char
+    dictionary of its properties - dictionary in format {property_ID: Property}
+
+User is able to:
+    - Add the new properties
+    - Check out current properties
+    - Delete his one of his properties
+    - Logout
+
+Admin (inherits from User) has:
+    - ability delete any properties
+
+*** Admin is defined once inside the program code.
+
+-------------------------------------------------------------------------------
+Exceptions:
+    Register/User data exceptions:
+    - Username already exist
+    - Password is too long(more than 16chars)
+    - Email is not valid
+
+    Login exceptions:
+    - User isn't registered yet/ username doesn't exist
+    - Invalid password
+    - Forgot password (in this case it can be changed via email)
+
+    User's actions:
+        User is trying to delete not his property
+        User is trying to do something without logging in
