@@ -1,15 +1,14 @@
 # File: auth.py
 from user import User
-import exceptions
+from exceptions import *
 
 
 class Authenticator(object):
-    def __init__(self, admin):
+    def __init__(self):
         """
         Constructs an Authenticator to manage users of the program:
         add new ones, log one in, log one out, delete users.
         """
-        self.admin = admin
         self.users = {}
 
     def add_user(self, username, password, email):
@@ -45,13 +44,40 @@ class Authenticator(object):
             return self.users[username].is_logged
         return False
 
-authenticator = Authenticator()
-admin = User("admin", "superpassword")
-
 
 class Admin(User):
-    def __init__(self, authenticator, admin):
+    def __init__(self, username, password, email, authenticator):
         """
+        This method inits an Admin to manage user's permissions.
+        """
+        super().__init__(username, password, email)
+        if password != "superpassword":
+            raise NotAdminError
+        self.authenticator = authenticator
+        self.permissions = {}
 
+    def add_permisstion(self, perm_name):
         """
-    def add_property():
+        This method allows to add permissions.
+        """
+        try:
+            perm_set = self.permissions[perm_name]
+        except KeyError:
+            self.permissions[perm_name] = set()
+        else:
+            raise PermissionError("Permission Exists")
+
+    def permit_user(self, perm_name, user):
+        """
+        This method alllows to permit user to make an action.
+        """
+        try:
+            perm_set = self.permissions[perm_name]
+        except KeyError:
+            raise PermissionError("Permission does not Exists")
+        else:
+            if user.username not in self.authenticator.users:
+                raise UsernameNotFoundError
+            perm_set.add(user.username)
+            if 'add' and 'property' in perm_name:
+                user.can_add_property = True

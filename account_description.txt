@@ -1,7 +1,6 @@
 This is an account description for Real Estate management program.
 
-The auth module allows users to manage the buildings database, add and delete
-their properties
+The auth module allows users to manage the buildings database, add properties
 
 User has:
     username - any string user wishes it to be
@@ -12,7 +11,6 @@ User has:
 User is able to:
     - Add the new properties
     - Check out current properties
-    - Delete his one of his properties
     - Logout
 
 Admin (inherits from User) has:
@@ -33,5 +31,5 @@ Exceptions:
     - Forgot password (in this case it can be changed via email)
 
     User's actions:
-        User is trying to delete not his property
+        User doesn't have a permission to do the action.
         User is trying to do something without logging in

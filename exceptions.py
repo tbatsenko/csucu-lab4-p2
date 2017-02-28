@@ -9,21 +9,30 @@ class AuthError(object):
 
 
 class UsernameExistsError(AuthError):
-    print("This username is already taken")
+    # in case ("This username is already taken")
+    pass
 
 
 class LongPasswordError(AuthError):
-    print("This password is too long - it must be under 16 symbols")
+    # in case ("This password is too long - it must be under 16 symbols")
+    pass
 
 
 class InvalidEmailError(AuthError):
-    print("This email is invalid, try one that has '@' symbol")
+    # in case ("This email is invalid, try one that has '@' symbol")
+    pass
 
 
 class UsernameNotFoundError(AuthError):
-    print("There is no user with such username - check spelling or register")
+    # in case("There is no user with such username-check spelling or register")
+    pass
 
 
 class InvalidPasswordError(AuthError):
-    print("Password and username don't match - please try again or use" +
-          "the 'forgot_password' option")
+    # in case ("Password and username don't match - please try again or use" +
+    # "the 'forgot_password' option")
+    pass
+
+
+class PermissionError(Exception):
+    pass

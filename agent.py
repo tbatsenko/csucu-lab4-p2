@@ -1,5 +1,5 @@
 # File: agent.py
-from funcs import get_valid_input
+from funcs import *
 from deals import *
 
 
